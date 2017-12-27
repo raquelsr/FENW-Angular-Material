@@ -4,7 +4,9 @@ import { ApiItemsService } from "../api-items/api-items.service";
 
 @Component({
     selector: 'mostrar-items',
-    templateUrl: './mostrarItems.component.html'
+    templateUrl: './mostrarItems.component.html',
+    styleUrls: ['mostrarItems.component.css'],
+
 })
 
 export class MostrarItems implements OnInit {

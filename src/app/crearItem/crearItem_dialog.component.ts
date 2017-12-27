@@ -1,5 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { ApiItemsService } from '../api-items/api-items.service';
+import { Item } from '../api-items/item.model';
 
 /**
  * @title Dialog Overview
@@ -12,8 +14,9 @@ export class CrearItemCallDialog {
 
   name: string;
   description: string;
+  item: Item;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(CrearItemDialog, {
@@ -22,9 +25,8 @@ export class CrearItemCallDialog {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.name = result.name;
-      this.description = result.description;
-
+      this.item = {name: result.name, description: result.description};
+      this.apiItemsService.create(this.item);
     });
   }
 
