@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpService } from './core/http.service';
 import { ApiItemsService } from './api-items/api-items.service';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { ApiItemsComponent } from './api-items/api-items.componet';
+import { ApiItemsComponent } from './api-items/api-items.component';
 import { MaterialComponent } from './material/material.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -24,7 +24,9 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CrearItemCallDialog, CrearItemDialog} from './crearItem/crearItem_dialog.component';
+import { MostrarItems } from './mostrarItems/mostrarItems.component';
 
 @NgModule({
   exports: [
@@ -66,16 +68,19 @@ export class DemoMaterialModule { }
 
 @NgModule({
   declarations: [
-    AppComponent, ApiItemsComponent, MaterialComponent
+    AppComponent, ApiItemsComponent, MaterialComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, DemoMaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexLayoutModule
 
   ],
+  entryComponents: [CrearItemCallDialog, CrearItemDialog], 
   providers: [HttpService, ApiItemsService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
