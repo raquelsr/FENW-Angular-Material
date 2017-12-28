@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { Item } from "../api-items/item.model";
 import { ApiItemsService } from "../api-items/api-items.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'mostrar-items',
@@ -14,21 +16,49 @@ export class MostrarItems implements OnInit {
 
     items: Item[];
     itemId: number;
-
+    item: Item;
+    name: string;
+    description: string;
+    
     constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) { }
 
     ngOnInit(): void{
         this.apiItemsService.getAllItems().subscribe(items => this.items = items);
     }
 
-    openDialog(): void {
+    openDialogEliminar(): void {
         let dialogRef = this.dialog.open(EliminarItemDialog, {
-          width: '250px',
+          width: '250px', 
           data: { itemId: this.itemId}
         });
     
         dialogRef.afterClosed().subscribe(result => {
           this.apiItemsService.delete(this.itemId);
+        });
+      }
+
+      openDialogEditar(): void {
+        
+        let dialogRef = this.dialog.open(EditarItemDialog, {
+          width: '250px',
+          data: {itemId: this.itemId, name:"info"}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          this.apiItemsService.update(this.item);
+        });
+      }
+
+      openDialogVer(): void {
+        this.item = this.apiItemsService.getItem(this.itemId);
+        alert("component" + this.item.name);
+        let dialogRef = this.dialog.open(VerItemDialog, {
+          width: '250px',
+          data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
+        });
+
+    
+        dialogRef.afterClosed().subscribe(result => {
         });
       }
 }
@@ -41,6 +71,38 @@ export class MostrarItems implements OnInit {
   
     constructor(
       public dialogRef: MatDialogRef<EliminarItemDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
+  }
+
+  @Component({
+    selector: 'editarItem-dialog',
+    templateUrl: 'editarItem_dialog.component.html',
+  })
+  export class EditarItemDialog {
+  
+    constructor(
+      public dialogRef: MatDialogRef<EditarItemDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
+  }
+
+  @Component({
+    selector: 'verItem-dialog',
+    templateUrl: 'verItem_dialog.component.html',
+  })
+  export class VerItemDialog {
+  
+    constructor(
+      public dialogRef: MatDialogRef<VerItemDialog>,
       @Inject(MAT_DIALOG_DATA) public data: any) { }
   
     onNoClick(): void {

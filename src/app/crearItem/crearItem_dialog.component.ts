@@ -21,7 +21,7 @@ export class CrearItemCallDialog {
   openDialog(): void {
     let dialogRef = this.dialog.open(CrearItemDialog, {
       width: '250px',
-      data: { name: this.name, descripcion: this.description }
+      data: { name: this.name, description: this.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {

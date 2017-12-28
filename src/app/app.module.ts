@@ -26,7 +26,7 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CrearItemCallDialog, CrearItemDialog} from './crearItem/crearItem_dialog.component';
-import { MostrarItems, EliminarItemDialog } from './mostrarItems/mostrarItems.component';
+import { MostrarItems, EliminarItemDialog, EditarItemDialog, VerItemDialog} from './mostrarItems/mostrarItems.component';
 
 @NgModule({
   exports: [
@@ -68,7 +68,7 @@ export class DemoMaterialModule { }
 
 @NgModule({
   declarations: [
-    AppComponent, ApiItemsComponent, MaterialComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, EliminarItemDialog
+    AppComponent, ApiItemsComponent, MaterialComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, EditarItemDialog, VerItemDialog, EliminarItemDialog
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, DemoMaterialModule,
@@ -78,7 +78,7 @@ export class DemoMaterialModule { }
     FlexLayoutModule
 
   ],
-  entryComponents: [CrearItemCallDialog, CrearItemDialog, EliminarItemDialog],   
+  entryComponents: [CrearItemCallDialog, CrearItemDialog, EliminarItemDialog, EditarItemDialog, VerItemDialog],   
   providers: [HttpService, ApiItemsService],
   bootstrap: [AppComponent]
 })

@@ -14,6 +14,8 @@ export class ApiItemsService {
 
     private allItems: Subject<Item[]> = new Subject();
 
+    private item : Item;
+    
     constructor(private httpService: HttpService) { }
 
     getAllItems(): Observable<Item[]> {
@@ -23,6 +25,17 @@ export class ApiItemsService {
 
     getUpdateItem(): Observable<Item> {
         return this.updateItem.asObservable();
+    }
+
+    getItem(id: number): Item {
+        this.httpService.get(ApiItemsService.URI + '/' + id).subscribe(
+            (itemValue: Item) => {
+                this.item = {id: itemValue.id, name: itemValue.name, description: itemValue.description};
+                alert(this.item.name + this.item.description);
+            },
+        );
+        alert(this.item.name + this.item.description) ;
+        return this.item;
     }
 
     prepareUpdate(id: number) {
