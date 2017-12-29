@@ -15,22 +15,35 @@ export class MostrarItems implements OnInit {
     items: Item[];
     itemId: number;
     item: Item;
+    updateItem: Item;
     
     constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
 
     ngOnInit(): void{
         this.apiItemsService.getAllItems().subscribe(items => this.items = items);
         this.apiItemsService.getReadItem().subscribe(item => {
-          this.item = {id: item.id, name:item.name, description:item.description};
-          this.actualizarItemVer(item);
+          this.verItem(item);
+        });
+        this.apiItemsService.getUpdateItem().subscribe(item => {
+          alert("update" + item.name);
+          this.prepararItem(item);
         });
     }
 
-    read(id: number) {
-      this.apiItemsService.read(id);
+    read() {
+      this.apiItemsService.read(this.itemId);
     }
 
-    actualizarItemVer(item: Item){
+    editarItem() {
+      this.apiItemsService.prepareUpdate(this.itemId);
+    }
+
+    prepararItem(item: Item){
+      this.updateItem = {id: item.id, name: item.name , description: item.description};
+      this.openDialogEditar();
+    }
+
+    verItem(item: Item){
       this.item = {id: item.id, name: item.name , description: item.description};
       this.openDialogVer();
     }
@@ -44,19 +57,23 @@ export class MostrarItems implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           this.apiItemsService.delete(this.itemId);
         });
-      }
+    }
 
-      openDialogEditar(): void {
+    openDialogEditar(): void {
         
         let dialogRef = this.dialog.open(EditarItemDialog, {
           width: '250px',
-          data: {itemId: this.itemId, name:"info"}
+          data: {itemId: this.itemId, name: this.updateItem.name, description: this.updateItem.description}
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          this.apiItemsService.update(this.item);
+          alert("editar" + this.updateItem.id);
+          this.updateItem = {id: this.updateItem.id, name: result.name, description: result.description};
+          alert("editar" + this.updateItem.id + this.updateItem.name);
+
+          this.apiItemsService.update(this.updateItem);
         });
-      }
+    }
 
     openDialogVer(): void {
       
