@@ -23,7 +23,7 @@ export class ApiItemsComponent implements OnInit {
       this.updateItem = item;
       this.updateCheked = true;
     });
-    this.apiItemsService.getReadItem().subscribe(item => alert( item.name + ',' + item.description));
+    //this.apiItemsService.getReadItem().subscribe(item => alert(item.id + "," + item.name + ',' + item.description));
   }
 
   read(id: number) {

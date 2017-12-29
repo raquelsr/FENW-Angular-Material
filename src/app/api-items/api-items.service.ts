@@ -27,17 +27,6 @@ export class ApiItemsService {
         return this.updateItem.asObservable();
     }
 
-    getItem(id: number): Item {
-        this.httpService.get(ApiItemsService.URI + '/' + id).subscribe(
-            (itemValue: Item) => {
-                this.item = {id: itemValue.id, name: itemValue.name, description: itemValue.description};
-                alert(this.item.name + this.item.description);
-            },
-        );
-        alert(this.item.name + this.item.description) ;
-        return this.item;
-    }
-
     prepareUpdate(id: number) {
         this.httpService.get(ApiItemsService.URI + '/' + id).subscribe(
             (itemValue: Item) => this.updateItem.next(itemValue),
