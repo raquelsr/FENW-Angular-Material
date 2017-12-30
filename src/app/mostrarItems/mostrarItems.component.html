@@ -1,6 +1,7 @@
-<button mat-raised-button (click)="openDialogEliminar()">Eliminar</button>
 <button mat-raised-button (click)="editarItem()">Editar</button>
 <button mat-raised-button (click)="read()">Ver</button>
+
+<eliminarItem-callDialog [itemId] = "itemId"></eliminarItem-callDialog>
 
 <hr>
 <div id="items">
@@ -24,4 +25,5 @@
         </mat-radio-button>
     </mat-radio-group>
 </div>
+
 <div class="example-selected-value">Your favorite season is: {{itemId}}</div>

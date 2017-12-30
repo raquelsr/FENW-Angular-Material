@@ -2,12 +2,14 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { Item } from "../api-items/item.model";
 import { ApiItemsService } from "../api-items/api-items.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { EliminarItemCallDialog2 } from "../eliminarItem/eliminarItem_dialog.component";
 
 
 @Component({
     selector: 'mostrar-items',
     templateUrl: './mostrarItems.component.html',
     styleUrls: ['mostrarItems.component.css'],
+  
 })
 
 export class MostrarItems implements OnInit {
@@ -31,6 +33,10 @@ export class MostrarItems implements OnInit {
         });
     }
 
+    getId():number{
+      return this.itemId;
+    }
+
     read() {
       this.apiItemsService.read(this.itemId);
     }
@@ -49,13 +55,6 @@ export class MostrarItems implements OnInit {
       this.apiItemsService.prepareUpdate(this.itemId);
     }
 
-    openDialogEliminar(): void {
-        let dialogRef = this.dialog.open(EliminarItemDialog, {
-          width: '250px', 
-          data: { itemId: this.itemId}
-        });
-    }
-
     openDialogEditar(): void {
         
         let dialogRef = this.dialog.open(EditarItemDialog, {
@@ -72,26 +71,6 @@ export class MostrarItems implements OnInit {
       });
     }
 }
-
-@Component({
-    selector: 'eliminarItem-dialog',
-    templateUrl: 'eliminarItem_dialog.component.html',
-  })
-  export class EliminarItemDialog {
-  
-    constructor(
-      public dialogRef: MatDialogRef<EliminarItemDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
-  
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-
-    aceptar(): void {
-      this.apiItemsService.delete(this.data.itemId);
-    }
-  
-  }
 
   @Component({
     selector: 'editarItem-dialog',
