@@ -26,9 +26,10 @@ import {
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CrearItemCallDialog, CrearItemDialog} from './crearItem/crearItem_dialog.component';
-import { MostrarItems, EditarItemDialog, VerItemDialog} from './mostrarItems/mostrarItems.component';
+import { MostrarItems} from './mostrarItems/mostrarItems.component';
 import { EliminarItemDialog, EliminarItemCallDialog} from './eliminarItem/eliminarItem_dialog.component';
-
+import { EditarItemDialog, EditarItemCallDialog} from './editarItem/editarItem_dialog.component';
+import { VerItemDialog, VerItemCallDialog} from './verItem/verItem_dialog.component';
 
 @NgModule({
   exports: [
@@ -70,7 +71,7 @@ export class DemoMaterialModule { }
 
 @NgModule({
   declarations: [
-    AppComponent, ApiItemsComponent, MaterialComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, EditarItemDialog, VerItemDialog, [EliminarItemCallDialog, EliminarItemDialog]
+    AppComponent, ApiItemsComponent, MaterialComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, EditarItemDialog, EditarItemCallDialog, VerItemDialog, VerItemCallDialog, [EliminarItemCallDialog, EliminarItemDialog], 
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, DemoMaterialModule,
@@ -79,7 +80,7 @@ export class DemoMaterialModule { }
     MatNativeDateModule,
     FlexLayoutModule
   ],
-  entryComponents: [CrearItemCallDialog, CrearItemDialog , EditarItemDialog, VerItemDialog, EliminarItemCallDialog, EliminarItemDialog],   
+  entryComponents: [CrearItemCallDialog, CrearItemDialog , EditarItemDialog, EditarItemCallDialog, VerItemDialog,VerItemCallDialog, EliminarItemCallDialog, EliminarItemDialog],   
   providers: [HttpService, ApiItemsService],
   bootstrap: [AppComponent]
 })
