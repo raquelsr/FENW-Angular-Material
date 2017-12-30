@@ -3,9 +3,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ApiItemsService } from '../api-items/api-items.service';
 import { Item } from '../api-items/item.model';
 
-/**
- * @title Dialog Overview
- */
 @Component({
   selector: 'crearItem-callDialog',
   templateUrl: 'crearItem_callDialog.component.html'
@@ -14,9 +11,8 @@ export class CrearItemCallDialog {
 
   name: string;
   description: string;
-  item: Item;
 
-  constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(CrearItemDialog, {
@@ -24,10 +20,6 @@ export class CrearItemCallDialog {
       data: { name: this.name, description: this.description }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.item = {name: result.name, description: result.description};
-      this.apiItemsService.create(this.item);
-    });
   }
 
 }
@@ -38,12 +30,19 @@ export class CrearItemCallDialog {
 })
 export class CrearItemDialog {
 
+  item: Item;
+
   constructor(
     public dialogRef: MatDialogRef<CrearItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  aceptar(): void {
+    this.item = {id: this.data.itemId , name: this.data.name, description: this.data.description};
+    this.apiItemsService.create(this.item);
   }
 
 }

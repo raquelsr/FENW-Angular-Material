@@ -15,7 +15,9 @@ export class MostrarItems implements OnInit {
     items: Item[];
     itemId: number;
     item: Item;
-    updateItem: Item;
+
+    panelOpenState: boolean = false;
+
     
     constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
 
@@ -25,7 +27,6 @@ export class MostrarItems implements OnInit {
           this.verItem(item);
         });
         this.apiItemsService.getUpdateItem().subscribe(item => {
-          alert("update" + item.name);
           this.prepararItem(item);
         });
     }
@@ -34,18 +35,18 @@ export class MostrarItems implements OnInit {
       this.apiItemsService.read(this.itemId);
     }
 
-    editarItem() {
-      this.apiItemsService.prepareUpdate(this.itemId);
-    }
-
-    prepararItem(item: Item){
-      this.updateItem = {id: item.id, name: item.name , description: item.description};
-      this.openDialogEditar();
-    }
-
     verItem(item: Item){
       this.item = {id: item.id, name: item.name , description: item.description};
       this.openDialogVer();
+    }
+    
+    prepararItem(item: Item){
+      this.item = {id: item.id, name: item.name , description: item.description};
+      this.openDialogEditar();
+    }
+
+    editarItem() {
+      this.apiItemsService.prepareUpdate(this.itemId);
     }
 
     openDialogEliminar(): void {
@@ -53,25 +54,13 @@ export class MostrarItems implements OnInit {
           width: '250px', 
           data: { itemId: this.itemId}
         });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          this.apiItemsService.delete(this.itemId);
-        });
     }
 
     openDialogEditar(): void {
         
         let dialogRef = this.dialog.open(EditarItemDialog, {
           width: '250px',
-          data: {itemId: this.itemId, name: this.updateItem.name, description: this.updateItem.description}
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          alert("editar" + this.updateItem.id);
-          this.updateItem = {id: this.updateItem.id, name: result.name, description: result.description};
-          alert("editar" + this.updateItem.id + this.updateItem.name);
-
-          this.apiItemsService.update(this.updateItem);
+          data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
         });
     }
 
@@ -80,9 +69,6 @@ export class MostrarItems implements OnInit {
       let dialogRef = this.dialog.open(VerItemDialog, {
         width: '250px',
         data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
       });
     }
 }
@@ -95,10 +81,14 @@ export class MostrarItems implements OnInit {
   
     constructor(
       public dialogRef: MatDialogRef<EliminarItemDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
+      @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
   
     onNoClick(): void {
       this.dialogRef.close();
+    }
+
+    aceptar(): void {
+      this.apiItemsService.delete(this.data.itemId);
     }
   
   }
@@ -109,12 +99,19 @@ export class MostrarItems implements OnInit {
   })
   export class EditarItemDialog {
   
+    item: Item;
+    
     constructor(
       public dialogRef: MatDialogRef<EditarItemDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any) { }
+      @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
   
     onNoClick(): void {
       this.dialogRef.close();
+    }
+
+    aceptar(): void {
+      this.item = {id: this.data.itemId, name: this.data.name, description: this.data.description};
+      this.apiItemsService.update(this.item);
     }
   
   }

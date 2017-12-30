@@ -11,3 +11,10 @@
     margin: 15px 0;
   }
   
+  #items{
+    text-align: center;
+  }
+
+  #panel {
+    width: 100%;
+  }
