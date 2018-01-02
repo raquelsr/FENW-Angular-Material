@@ -1,16 +1,19 @@
 <h1 mat-dialog-title>Editar item</h1>
+<hr>
 <div mat-dialog-content>
-  <p>¿Desea editar el item {{data.itemId}} {{data.name}} {{data.description}}?</p>
+  <p id="pregunta">¿Desea editar el item {{data.itemId}}?</p>
 </div>
-<p>Nombre:</p>
+<p id ="negrita">Nombre:</p>
   <mat-form-field>
     <input matInput tabindex="1" [(ngModel)]="data.name">
   </mat-form-field>
-  <p>Descripción:</p>
+  <p id="negrita">Descripción:</p>
   <mat-form-field>
     <input matInput tabindex="1" [(ngModel)]="data.description">
   </mat-form-field>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+<div class="buttons_dialog">
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+  </div>
 </div>

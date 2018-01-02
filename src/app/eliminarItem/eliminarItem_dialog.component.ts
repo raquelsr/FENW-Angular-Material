@@ -5,7 +5,8 @@ import { Item } from '../api-items/item.model';
 
 @Component({
   selector: 'eliminarItem-callDialog',
-  templateUrl: 'eliminarItem_callDialog.component.html'
+  templateUrl: 'eliminarItem_callDialog.component.html',
+  styleUrls: ['./eliminarItem.component.css']
 })
 export class EliminarItemCallDialog {
 
@@ -25,6 +26,7 @@ export class EliminarItemCallDialog {
 @Component({
   selector: 'eliminarItem-dialog',
   templateUrl: 'eliminarItem_dialog.component.html',
+  styleUrls: ['./eliminarItem.component.css']
 })
 export class EliminarItemDialog {
 

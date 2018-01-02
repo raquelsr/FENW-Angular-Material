@@ -5,7 +5,9 @@ import { Item } from '../api-items/item.model';
 
 @Component({
   selector: 'editarItem-callDialog',
-  templateUrl: 'editarItem_callDialog.component.html'
+  templateUrl: 'editarItem_callDialog.component.html',
+  styleUrls: ['./editarItem.component.css']
+
 })
 export class EditarItemCallDialog {
 
@@ -42,6 +44,7 @@ export class EditarItemCallDialog {
 @Component({
   selector: 'editarItem-dialog',
   templateUrl: 'editarItem_dialog.component.html',
+  styleUrls: ['./editarItem.component.css']
 })
 export class EditarItemDialog {
 

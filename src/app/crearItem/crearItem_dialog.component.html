@@ -7,7 +7,9 @@
       <input matInput placeholder="Descripción" [(ngModel)]="data.description">
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+<div class="buttons_dialog">
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+  </div>
 </div>

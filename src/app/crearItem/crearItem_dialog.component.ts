@@ -1,25 +1,25 @@
 import {Component, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { ApiItemsService } from '../api-items/api-items.service';
 import { Item } from '../api-items/item.model';
 
 @Component({
   selector: 'crearItem-callDialog',
-  templateUrl: 'crearItem_callDialog.component.html'
+  templateUrl: 'crearItem_callDialog.component.html',
+  styleUrls: ['./crearItem.component.css']
 })
 export class CrearItemCallDialog {
 
   name: string;
   description: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(CrearItemDialog, {
       width: '250px',
       data: { name: this.name, description: this.description }
     });
-
   }
 
 }
@@ -27,6 +27,7 @@ export class CrearItemCallDialog {
 @Component({
   selector: 'crearItem-dialog',
   templateUrl: 'crearItem_dialog.component.html',
+  styleUrls: ['./crearItem.component.css']
 })
 export class CrearItemDialog {
 
@@ -46,3 +47,4 @@ export class CrearItemDialog {
   }
 
 }
+

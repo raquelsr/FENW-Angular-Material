@@ -18,3 +18,22 @@
   #panel {
     width: 100%;
   }
+
+  hr{
+    width: 60%;
+    height: 0.4% !important;
+    background-color: #000000 !important; 
+    margin-top: 2% !important;
+    margin-bottom: 0.7% !important;
+    border-color: #000000 !important; 
+    border-radius: 90%; 
+}
+
+.mat-radio-outer-circle{
+    border-color: green !important;
+}
+
+#radio {
+  border-color: blueviolet !important;
+}
+

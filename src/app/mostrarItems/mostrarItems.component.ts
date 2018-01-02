@@ -20,7 +20,9 @@ export class MostrarItems implements OnInit {
     constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
 
     ngOnInit(): void{
-        this.apiItemsService.getAllItems().subscribe(items => this.items = items);
+        this.apiItemsService.getAllItems().subscribe(
+            items => this.items = items,
+            error => alert("No está conectado al servidor"));
     }
 
     

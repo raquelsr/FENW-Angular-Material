@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
-
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,7 +10,7 @@ import { HttpService } from './core/http.service';
 import { ApiItemsService } from './api-items/api-items.service';
 
 import { CrearItemCallDialog, CrearItemDialog } from './crearItem/crearItem_dialog.component';
-import { MostrarItems}  from './mostrarItems/mostrarItems.component';
+import { MostrarItems }  from './mostrarItems/mostrarItems.component';
 import { EliminarItemDialog, EliminarItemCallDialog } from './eliminarItem/eliminarItem_dialog.component';
 import { EditarItemDialog, EditarItemCallDialog } from './editarItem/editarItem_dialog.component';
 import { VerItemDialog, VerItemCallDialog } from './verItem/verItem_dialog.component';

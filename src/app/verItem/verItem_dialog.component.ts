@@ -5,7 +5,8 @@ import { Item } from '../api-items/item.model';
 
 @Component({
   selector: 'verItem-callDialog',
-  templateUrl: 'verItem_callDialog.component.html'
+  templateUrl: 'verItem_callDialog.component.html',
+  styleUrls: ['./verItem.component.css']
 })
 export class VerItemCallDialog {
   
@@ -32,7 +33,8 @@ verItem(item: Item){
 openDialogVer(): void {
   
   let dialogRef = this.dialog.open(VerItemDialog, {
-    width: '250px',
+    width: '30%',
+    height: '60%',
     data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
   });
 }
@@ -42,6 +44,7 @@ openDialogVer(): void {
 @Component({
   selector: 'verItem-dialog',
   templateUrl: 'verItem_dialog.component.html',
+  styleUrls: ['./verItem.component.css']
 })
 export class VerItemDialog {
 
