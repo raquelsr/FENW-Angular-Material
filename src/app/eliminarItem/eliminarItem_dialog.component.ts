@@ -1,5 +1,5 @@
 import {Component, Inject, Input} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { ApiItemsService } from '../api-items/api-items.service';
 import { Item } from '../api-items/item.model';
 
@@ -12,15 +12,18 @@ export class EliminarItemCallDialog {
 
   @Input() itemId: number
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private apiItemsService: ApiItemsService) {}
 
   openDialogEliminar(): void {
-    let dialogRef = this.dialog.open(EliminarItemDialog, {
-      width: '250px', 
-      data: { itemId: this.itemId} 
-    });
-}
-
+    if (this.itemId === undefined) {
+      alert("Seleccione un item.")
+    } else {
+      let dialogRef = this.dialog.open(EliminarItemDialog, {
+        width: '250px', 
+        data: {itemId: this.itemId} 
+      });
+    }
+  }
 }
 
 @Component({
@@ -32,7 +35,7 @@ export class EliminarItemDialog {
 
   constructor(
     public dialogRef: MatDialogRef<EliminarItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService, public snackBar: MatSnackBar) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -40,6 +43,11 @@ export class EliminarItemDialog {
 
   aceptar(): void {
     this.apiItemsService.delete(this.data.itemId);
+    
+    this.snackBar.open("Item eliminado", "CERRAR", {
+      duration: 2000,
+    });
   }
 
 }
+

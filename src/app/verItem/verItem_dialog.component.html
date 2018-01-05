@@ -1,8 +1,10 @@
 <h1 mat-dialog-title>Ver item</h1>
 <div mat-dialog-content>
-  <p>Item {{data.itemId}}</p>
-  <p>Name: {{data.name}}</p>
-  <p>Description: {{data.description}}</p>
+  <p id="item">Item {{data.itemId}}</p>
+  <p id="titulo">Nombre: </p>
+  <p id="info">{{data.name}}</p>
+  <p id="titulo">Descripción:</p>
+  <p id="info">{{data.description}}</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cerrar</button>

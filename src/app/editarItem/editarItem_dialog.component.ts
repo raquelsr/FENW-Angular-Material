@@ -1,5 +1,5 @@
 import {Component, Inject, Input} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { ApiItemsService } from '../api-items/api-items.service';
 import { Item } from '../api-items/item.model';
 
@@ -28,7 +28,11 @@ export class EditarItemCallDialog {
   }
 
   editarItem() {
-    this.apiItemsService.prepareUpdate(this.itemId);
+    if (this.itemId === undefined){
+      alert("Seleccione un item.");
+    } else {
+      this.apiItemsService.prepareUpdate(this.itemId);
+    }
   }
 
   openDialogEditar(): void {
@@ -52,7 +56,7 @@ export class EditarItemDialog {
     
     constructor(
       public dialogRef: MatDialogRef<EditarItemDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
+      @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService, private snackBar: MatSnackBar) { }
   
     onNoClick(): void {
       this.dialogRef.close();
@@ -61,6 +65,9 @@ export class EditarItemDialog {
     aceptar(): void {
       this.item = {id: this.data.itemId, name: this.data.name, description: this.data.description};
       this.apiItemsService.update(this.item);
+      this.snackBar.open("Item editado", "CERRAR", {
+        duration: 2000,
+      });
     }
 
 }

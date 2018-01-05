@@ -22,7 +22,11 @@ export class VerItemCallDialog {
 }
 
 read() {
-  this.apiItemsService.read(this.itemId);
+  if (this.itemId === undefined){
+    alert("Seleccione un item.");
+  } else {
+    this.apiItemsService.read(this.itemId);
+  }
 }
 
 verItem(item: Item){

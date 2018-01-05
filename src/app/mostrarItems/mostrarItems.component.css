@@ -22,18 +22,22 @@
   hr{
     width: 60%;
     height: 0.4% !important;
-    background-color: #000000 !important; 
     margin-top: 2% !important;
     margin-bottom: 0.7% !important;
-    border-color: #000000 !important; 
+    border-color:rgb(1, 22, 90) !important; 
     border-radius: 90%; 
 }
 
-.mat-radio-outer-circle{
-    border-color: green !important;
+#name {
+  color: rgb(1, 22, 90);
+  font-weight: bold;
 }
 
-#radio {
-  border-color: blueviolet !important;
+#desc {
+  font-weight: normal;
+  color: rgb(1, 22, 90);
 }
 
+#panel:hover {
+  background-color: red;
+}

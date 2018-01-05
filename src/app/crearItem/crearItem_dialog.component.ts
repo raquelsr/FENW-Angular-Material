@@ -35,7 +35,7 @@ export class CrearItemDialog {
 
   constructor(
     public dialogRef: MatDialogRef<CrearItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private apiItemsService: ApiItemsService, private snackBar: MatSnackBar) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -44,6 +44,9 @@ export class CrearItemDialog {
   aceptar(): void {
     this.item = {id: this.data.itemId , name: this.data.name, description: this.data.description};
     this.apiItemsService.create(this.item);
+    this.snackBar.open("Item creado", "CERRAR", {
+      duration: 2000,
+    });
   }
 
 }

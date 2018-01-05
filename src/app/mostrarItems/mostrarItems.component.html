@@ -4,21 +4,22 @@
 <verItem-callDialog [itemId] = "itemId"></verItem-callDialog>
 
 <hr>
+
 <div id="items">
     <mat-radio-group id ="radio" class="example-radio-group" [(ngModel)]="itemId"> 
         <mat-radio-button class="example-radio-button" *ngFor="let item of items" [value]="item.id">
             <div id="panel">
-            <mat-accordion>   
+            <mat-accordion id="item">   
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                             <label id="negrita">Item {{item.id}}</label>
                         </mat-panel-title>
-                        <mat-panel-description>
+                        <mat-panel-description id = "name">
                             {{item.name}}
                         </mat-panel-description>
                       </mat-expansion-panel-header>
-                         <p>{{item.description}}</p>
+                         <label id="desc"> {{item.description}}</label>
                     </mat-expansion-panel>
             </mat-accordion>
             </div>

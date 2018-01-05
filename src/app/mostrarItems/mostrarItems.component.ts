@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { Item } from "../api-items/item.model";
 import { ApiItemsService } from "../api-items/api-items.service";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from "@angular/material";
 
 @Component({
     selector: 'mostrar-items',
@@ -24,6 +24,4 @@ export class MostrarItems implements OnInit {
             items => this.items = items,
             error => alert("No está conectado al servidor"));
     }
-
-    
 }

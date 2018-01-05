@@ -76,7 +76,14 @@ export class HttpService {
 
     private handleError(error: Response): any {
         try {
-            return Observable.throw('ERROR: exception:'
+            var aux: string;
+            if (error.json().exception === "ItemIdNotFoundException"){
+                aux = "Seleccione un item válido."
+            } else {
+                aux = "Error interno del servidor. Contacte con el administrador."
+            }
+            return Observable.throw(aux + ' \n\n' + 
+            + 'ERROR: exception:'
                 + error.json().exception + ', message:'
                 + error.json().message + ', path:'
                 + error.json().path);

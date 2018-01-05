@@ -72,7 +72,7 @@ export class DemoMaterialModule { }
 @NgModule({
   declarations: [
     AppComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, [EditarItemDialog, EditarItemCallDialog], 
-    [VerItemDialog, VerItemCallDialog], [EliminarItemCallDialog, EliminarItemDialog], 
+    [VerItemDialog, VerItemCallDialog], [EliminarItemCallDialog, EliminarItemDialog],
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, DemoMaterialModule,

@@ -35,3 +35,7 @@ h1{
 .mat-dialog-actions{
     text-align: center;
 }
+
+.mat-dialog-content{
+    font-size: 10px !important;
+}

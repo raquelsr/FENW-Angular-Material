@@ -23,3 +23,26 @@ h1{
 .buttons_dialog{    
     text-align: center;
 }
+
+.mat-dialog-content, .mat-dialog-actions{
+    text-align: center;
+    align-content: center;
+    
+}
+
+#item {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#titulo{
+    font-size: 14px;
+    color: #000000;
+}
+
+#info {
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(1, 22, 90);
+
+}
