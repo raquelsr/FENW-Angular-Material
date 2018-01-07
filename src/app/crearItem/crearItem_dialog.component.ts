@@ -44,9 +44,11 @@ export class CrearItemDialog {
   aceptar(): void {
     this.item = {id: this.data.itemId , name: this.data.name, description: this.data.description};
     this.apiItemsService.create(this.item);
-    this.snackBar.open("Item creado", "CERRAR", {
-      duration: 2000,
-    });
+    if (this.apiItemsService.read(this.item.id)!==undefined){
+      this.snackBar.open("Item creado", "CERRAR", {
+        duration: 2000,
+      });
+    }
   }
 
 }

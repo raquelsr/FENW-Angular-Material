@@ -14,6 +14,7 @@ import { MostrarItems }  from './mostrarItems/mostrarItems.component';
 import { EliminarItemDialog, EliminarItemCallDialog } from './eliminarItem/eliminarItem_dialog.component';
 import { EditarItemDialog, EditarItemCallDialog } from './editarItem/editarItem_dialog.component';
 import { VerItemDialog, VerItemCallDialog } from './verItem/verItem_dialog.component';
+import { InfoComponent, InfoComponentDialog } from './info/info.component';
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -72,7 +73,7 @@ export class DemoMaterialModule { }
 @NgModule({
   declarations: [
     AppComponent, [CrearItemCallDialog, CrearItemDialog], MostrarItems, [EditarItemDialog, EditarItemCallDialog], 
-    [VerItemDialog, VerItemCallDialog], [EliminarItemCallDialog, EliminarItemDialog],
+    [VerItemDialog, VerItemCallDialog], [EliminarItemCallDialog, EliminarItemDialog], [InfoComponent, InfoComponentDialog]
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, DemoMaterialModule,
@@ -82,7 +83,7 @@ export class DemoMaterialModule { }
     FlexLayoutModule
   ],
   entryComponents: [CrearItemCallDialog, CrearItemDialog , EditarItemDialog, EditarItemCallDialog, 
-    VerItemDialog,VerItemCallDialog, EliminarItemCallDialog, EliminarItemDialog],   
+    VerItemDialog,VerItemCallDialog, EliminarItemCallDialog, EliminarItemDialog, InfoComponent, InfoComponentDialog],    
   providers: [HttpService, ApiItemsService],
   bootstrap: [AppComponent]
 })

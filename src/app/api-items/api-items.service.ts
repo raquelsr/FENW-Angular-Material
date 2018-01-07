@@ -61,7 +61,7 @@ export class ApiItemsService {
 
     create(item: Item) {
         this.httpService.post(ApiItemsService.URI, item).subscribe(
-            () => this.readAll(),
+            () => this.readAll(),   
             error => alert(error)
         );
     }

@@ -7,13 +7,13 @@
 
 <div id="items">
     <mat-radio-group id ="radio" class="example-radio-group" [(ngModel)]="itemId"> 
-        <mat-radio-button class="example-radio-button" *ngFor="let item of items" [value]="item.id">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="space-evenly none"  class="example-radio-button" *ngFor="let item of items" [value]="item.id">
             <div id="panel">
             <mat-accordion id="item">   
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <label id="negrita">Item {{item.id}}</label>
+                            <label id="negrita">{{item.id}}.</label>
                         </mat-panel-title>
                         <mat-panel-description id = "name">
                             {{item.name}}
