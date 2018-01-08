@@ -1,18 +1,20 @@
-<h1 mat-dialog-title>Editar item</h1>
-<div mat-dialog-content>
-  <p id="pregunta">¿Desea editar el item {{data.itemId}}?</p>
-</div>
-<p id ="negrita">Nombre:</p>
-  <mat-form-field>
-    <input matInput tabindex="1" [(ngModel)]="data.name">
-  </mat-form-field>
-  <p id="negrita">Descripción:</p>
-  <mat-form-field>
-    <input matInput tabindex="1" [(ngModel)]="data.description">
-  </mat-form-field>
-<div class="buttons_dialog">
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+<div>
+  <h1 mat-dialog-title>Editar item</h1>
+  <div mat-dialog-content>
+    <p id="pregunta">¿Desea editar el item {{data.itemId}}?</p>
+  </div>
+  <p id ="negrita">Nombre:</p>
+    <mat-form-field>
+      <input matInput tabindex="1" [(ngModel)]="data.name">
+    </mat-form-field>
+    <p id="negrita">Descripción:</p>
+    <mat-form-field>
+      <input matInput tabindex="1" [(ngModel)]="data.description">
+    </mat-form-field>
+  <div class="buttons_dialog">
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancelar</button>
+      <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="aceptar()">Aceptar</button>
+    </div>
   </div>
 </div>

@@ -14,7 +14,8 @@ export class InfoComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(InfoComponentDialog, {
-      height: '350px'
+      height: '330px',
+      width: '350px',
     });
   }
 }
@@ -24,5 +25,6 @@ export class InfoComponent {
 @Component({
   selector: 'infoDialog-component',
   templateUrl: 'infoDialog.component.html',
+  styleUrls: ['info.component.css'],
 })
 export class InfoComponentDialog {}

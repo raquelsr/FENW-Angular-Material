@@ -2,3 +2,30 @@ i{
     font-size: 40px;
     margin-bottom: 60%;
 }
+
+h1{
+    text-align: center;
+}
+
+h4, .mat-dialog-title{
+    color: rgb(1, 22, 90);
+}
+
+#cerrar{
+    background-color:rgb(1, 22, 90);
+    color: rgb(222, 236, 243);
+}
+
+#cerrar:hover{
+    background-color: rgba(235, 233, 233, 0.918);
+    color: rgb(1, 22, 90) !important;
+}
+
+.material-icons:hover{
+    background-color:rgb(1, 22, 90) !important;
+    color: rgba(235, 233, 233, 0.918);
+}
+
+p{
+    text-align: justify;
+}

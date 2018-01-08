@@ -38,7 +38,7 @@ openDialogVer(): void {
   
   let dialogRef = this.dialog.open(VerItemDialog, {
     width: '30%',
-    height: '60%',
+    height: '300px',
     data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
   });
 }
