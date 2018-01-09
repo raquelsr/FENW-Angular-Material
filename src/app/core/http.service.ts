@@ -82,7 +82,7 @@ export class HttpService {
             } else {
                 aux = "Error interno del servidor. Contacte con el administrador."
             }
-            return Observable.throw(aux + ' \n\n' + 
+            return Observable.throw(aux + ' \n\n' 
             + '----> ERROR: exception:'
                 + error.json().exception + ', message:'
                 + error.json().message + ', path:'

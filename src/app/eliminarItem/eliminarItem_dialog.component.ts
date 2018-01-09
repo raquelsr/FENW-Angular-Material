@@ -43,10 +43,6 @@ export class EliminarItemDialog {
 
   aceptar(): void {
     this.apiItemsService.delete(this.data.itemId);
-    
-    this.snackBar.open("Item eliminado", "CERRAR", {
-      duration: 2000,
-    });
   }
 
 }

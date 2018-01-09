@@ -49,9 +49,6 @@ export class CrearItemDialog {
       alert ("Rellene todos los campos.");
     } else {
       this.apiItemsService.create(this.item);
-      this.snackBar.open("Item creado", "CERRAR", {
-          duration: 2000,
-      });
     }
   }
 

@@ -3,6 +3,7 @@ import { HttpService } from '../core/http.service';
 import { Item } from '../api-items/item.model';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class ApiItemsService {
@@ -16,7 +17,7 @@ export class ApiItemsService {
 
     private item : Item;
     
-    constructor(private httpService: HttpService) { }
+    constructor(private httpService: HttpService, private snackBar: MatSnackBar) { }
 
     getAllItems(): Observable<Item[]> {
         this.readAll();
@@ -54,14 +55,24 @@ export class ApiItemsService {
 
     delete(id: number) {
         this.httpService.delete(ApiItemsService.URI + '/' + id).subscribe(
-            () => this.readAll(),
+            () => {
+                this.readAll();
+                this.snackBar.open("Item eliminado", "CERRAR", {
+                    duration: 2000,
+                  });
+             },
             error => alert(error)
         );
     }
 
     create(item: Item) {
         this.httpService.post(ApiItemsService.URI, item).subscribe(
-            () => this.readAll(),   
+            () => {
+                this.readAll();
+                this.snackBar.open("Item creado", "CERRAR", {
+                    duration: 2000,
+                });
+            },  
             error => alert(error)
         );
     }
