@@ -19,29 +19,29 @@ export class VerItemCallDialog {
     this.apiItemsService.getReadItem().subscribe(item => {
       this.verItem(item);
     });
-}
-
-read() {
-  if (this.itemId === undefined){
-    alert("Seleccione un item.");
-  } else {
-    this.apiItemsService.read(this.itemId);
   }
-}
 
-verItem(item: Item){
-  this.item = {id: item.id, name: item.name , description: item.description};
-  this.openDialogVer();
-}
+  read() {
+    if (this.itemId === undefined){
+      alert("Seleccione un item.");
+    } else {
+      this.apiItemsService.read(this.itemId);
+    }
+  }
 
-openDialogVer(): void {
-  
-  let dialogRef = this.dialog.open(VerItemDialog, {
-    width: '30%',
-    height: '300px',
-    data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
-  });
-}
+  verItem(item: Item){
+    this.item = {id: item.id, name: item.name , description: item.description};
+    this.openDialogVer();
+  }
+
+  openDialogVer(): void {
+    
+    let dialogRef = this.dialog.open(VerItemDialog, {
+      width: '30%',
+      height: '300px',
+      data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
+    });
+  }
 
 }
 

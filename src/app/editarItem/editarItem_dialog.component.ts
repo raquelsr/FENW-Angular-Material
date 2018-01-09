@@ -20,7 +20,7 @@ export class EditarItemCallDialog {
     this.apiItemsService.getUpdateItem().subscribe(item => {
       this.prepararItem(item);
     });
-}
+  }
 
   prepararItem(item: Item){
     this.item = {id: item.id, name: item.name , description: item.description};
@@ -41,7 +41,7 @@ export class EditarItemCallDialog {
       width: '250px',
       data: {itemId: this.itemId, name: this.item.name, description: this.item.description}
     });
-}
+  }
 
 }
 
@@ -64,10 +64,14 @@ export class EditarItemDialog {
 
     aceptar(): void {
       this.item = {id: this.data.itemId, name: this.data.name, description: this.data.description};
-      this.apiItemsService.update(this.item);
-      this.snackBar.open("Item editado", "CERRAR", {
-        duration: 2000,
-      });
+      if ((this.item.name === "") || (this.item.description === "")){
+        alert ("Rellene todos los campos.");
+      } else {
+        this.apiItemsService.update(this.item);
+        this.snackBar.open("Item editado", "CERRAR", {
+          duration: 2000,
+        });
+      }
     }
 
 }

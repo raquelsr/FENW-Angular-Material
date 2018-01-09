@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-/**
- * @title Button varieties
- */
+
 @Component({
   selector: 'info-component',
   templateUrl: 'info.component.html',

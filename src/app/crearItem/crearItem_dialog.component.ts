@@ -43,10 +43,16 @@ export class CrearItemDialog {
 
   aceptar(): void {
     this.item = {id: this.data.itemId , name: this.data.name, description: this.data.description};
-    this.apiItemsService.create(this.item);
-    this.snackBar.open("Item creado", "CERRAR", {
-        duration: 2000,
-    });
+    if ((this.item.name === undefined) || (this.item.description === undefined)){
+      alert ("Rellene todos los campos.");
+    } else  if ((this.item.name === "") || (this.item.description === "")){
+      alert ("Rellene todos los campos.");
+    } else {
+      this.apiItemsService.create(this.item);
+      this.snackBar.open("Item creado", "CERRAR", {
+          duration: 2000,
+      });
+    }
   }
 
 }
